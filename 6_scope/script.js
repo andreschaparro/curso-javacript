@@ -37,5 +37,5 @@ let p = 5
 {
     let q = 3
     p += q // es lo mismo que p = p + q y se puede usar con: -, *, /, %
-    console.log(p) 
+    console.log(p)
 }
