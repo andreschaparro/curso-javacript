@@ -4,7 +4,7 @@ console.log(z) // muestra true
 
 y = '5'
 z = x == y;
-console.log(z) // EL PROBLEMA ES QUE MUESTRA true, POR LO QUE EL STRING '5' SERIA IGUAL AL ENTERO 5
+console.log(z) // EL PROBLEMA ES QUE MUESTRA true CUANDO '5' ES UN STRING Y 5 ES UN ENTERO
 
 // SOLUCION
 z = x === y; // OPERADOR ES IGUAL EN VALOR Y TIPO?

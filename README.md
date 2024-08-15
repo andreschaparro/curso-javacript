@@ -2,9 +2,10 @@
 
 ## Software a instalar
 
-- [Visual Studio Code o VCS](https://code.visualstudio.com/Download).
+- [Visual Studio Code](https://code.visualstudio.com/Download).
 - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/).
 - [git-scm](https://git-scm.com/).
+- [Node.js (LTS)](https://nodejs.org/en).
 
 ## Hojas de ayuda
 
