@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de JS</title>
+    <link rel="stylescheet" href="style.css">
+</head>
+
+<!-- mostrar() esta definido en script.js -->
+<!-- Listado de eventos: https://www.w3schools.com/tags/ref_eventattributes.asp -->
+
+<body onload="mostrar()" onkeydown="mostrar()">
+    <h1>Eventos: </h1>
+    <p id="seleccionable"></p>
+    <button onclick="mostrar()">HACEME CLIC</button>
+    <button onmouseover="mostrar()">PONE EL MOUSE ENCIMA</button>
+    <select onchange="mostrar()">
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="JS">JS</option>
+    </select>
+    <script src="script.js"></script>
+</body>
+
+</html>
