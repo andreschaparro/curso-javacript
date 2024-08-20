@@ -101,7 +101,7 @@ resultado = array.some(x => x == 'Naranja'); // Debe recibir una callback (funci
 console.log(resultado);
 
 // METODO EVERY
-array= ['Naranja', 'Manzana', 'Manzana', 'Manzana'];
+array = ['Naranja', 'Manzana', 'Manzana', 'Manzana'];
 resultado = array.every(x => x == 'Naranja'); // Debe recibir una callback (funcion de flecha) que sirva para saber si se encontro al menos con un elemento diferente al indicado en el Array y en ese caso devolver false
 console.log(resultado);
 
