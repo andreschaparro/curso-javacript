@@ -1,4 +1,5 @@
 // OBJETO MATH
+// EJECUTAR node script.js
 
 // CONSTANTES
 console.log(Math.PI);       // Devuelve PI
@@ -41,6 +42,6 @@ console.log(redondeo);
 // NUMEROS ALEATORIOS
 console.log(Math.random()); // Da un numero al azar entre 0 y 1
 
-numero = Math.random()* 100; // Numero aleatorio entre 0 y 100
+numero = Math.random() * 100; // Numero aleatorio entre 0 y 100
 redondeo = Math.round(numero);
 console.log(redondeo);
