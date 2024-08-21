@@ -23,7 +23,7 @@ console.log(conjunto.size);
 let nuevoArray = [...conjunto];
 console.log(nuevoArray);
 
-// MAP ES UN CONJUNTO DE PARES CLAVE-VALOR PERO QUE NO SON OBJETOS
+// MAPS ES UN CONJUNTO DE PARES CLAVE-VALOR PERO QUE NO SON OBJETOS
 let mapa = new Map([
     ['Computadores', 10],
     ['Tablets', 5],
