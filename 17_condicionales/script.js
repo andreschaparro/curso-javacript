@@ -65,3 +65,5 @@ if (edad >= 18) {
 } else {
     console.log('Debes ser mayor de edad para viajar al exterior');
 }
+
+// Hacer el TP2: Juego Adivinanza

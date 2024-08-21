@@ -75,3 +75,5 @@ console.log(recibido.split('.')) // el separador es un caracter
 console.log(recibido.split('. ')) // el separador es otro string
 console.log(recibido.split('')) // separa letra por letra
 // En todos los casos el resultado es un Array de strings
+
+// Hacer el TP1: Calculadora
