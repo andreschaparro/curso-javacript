@@ -40,3 +40,5 @@ function obtenerContenido(enlace) {
     }
     return contenido[enlace];
 };
+
+// Subirlo a https://www.netlify.com/
