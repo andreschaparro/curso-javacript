@@ -93,3 +93,5 @@ fetch(`${urlBase}/${query}`, {
 // fetch(`${urlBase}/${query}/${id}`, {
 //     method: 'DELETE',
 // }); // NO NOS VA A DEVOLVER NADA LA API FALSA
+
+// Hacer los TP4, TP5, y TP6
