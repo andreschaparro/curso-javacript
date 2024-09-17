@@ -1,4 +1,5 @@
-let x = 5, y = 5;
+let x = 5, y = 5
+
 let z = x == y; // OPERADOR ES IGUAL EN VALOR?
 console.log(z) // muestra true
 

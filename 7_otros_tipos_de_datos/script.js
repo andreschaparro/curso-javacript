@@ -1,42 +1,58 @@
-// BOOLEANO
-let verdadero = true
-let falso = false
+// Booleanos o lógicos
+let var1 = true
+let var2 = false
+console.log(var1)
+console.log(var2)
 
-// UNDEFINED
-let a // valor sin asignar
+// Variable a la que no se le asignó un valor o undefined
+let var3
+console.log(var3)
 
-// NULL
-let b = null // ausencia de valor
+// Ausencia de valor o null, que no es lo mismo que undefined
+let var4 = null
+console.log(var4)
 
-// OBJETO
-let objeto = {
-    clave: 'valor'
+// Objeto
+let var5 = {
+    //Pares clave: valor
+    nombre: 'Pedro',
+    apellido: 'Ramos',
+    edad: 45
 }
+console.log(var5)
 
-// ARRAY O LISTAS
-let array = [1, 2, 3, 4, 5, 6]
-let cursos = ['HTML', 'CSS', 'JS']
-
-// DATE
-const date = new Date('2024-08-13')
-console.log(date)
-
-// ERROR POR MIX DE NUMEROS y STRINGS
-let var1 = 5
-let var2 = '5'
-let var3 = var1 + var2
-console.log(var3) // Convierte 5 a '5' (CASTEO), lo concatena (OPERADOR +) con el otro '5', y muestra '55'
-
-// SOLUCION PARSEO A INT
-var3 = var1 + parseInt(var2)
-console.log(var3) // muestra el entero 10
-
-// PARSEO A FLOAT
-let var4 = 5.9
-let var5 = '5.5'
-let var6 = var4 + parseFloat(var5)
+// Array (arreglos) o lista de valores
+let var6 = [1, 2, 3, 4, 5, 6]
+let var7 = ['HTML', 'CSS', 'JS']
 console.log(var6)
+console.log(var7)
 
-// ERROR POR REDONDEO HACIA ABAJO
-var6 = var4 + parseInt(var5)
-console.log(var6)
+// Fecha
+const var8 = new Date('2024-08-13')
+console.log(var8)
+
+// Mezcla de números y strings
+let var9 = 5
+let var10 = '5'
+// La siguiente línea convierte 5 a '5' (casteo implícito)
+// Luego el operador + concatena los dos strings y termina por mostrar '55'
+let var11 = var9 + var10
+console.log(var11)
+
+// La siguiente línea convierte '5' a 5 utilizando la función parseInt (casteo explícito o parseo)
+// Luego el operador + suma los dos números y termina por mostrar 10
+var11 = var9 + parseInt(var10)
+console.log(var11)
+
+// La siguiente línea convierte '5.5' a 5.5 utilizando la función parseFloat (casteo explícito o parseo)
+// Luego el operador + suma los dos números y termina por mostrar 11.4
+let var12 = 5.9
+let var13 = '5.5'
+let var14 = var12 + parseFloat(var13)
+console.log(var14)
+
+// La siguiente línea convierte '5.5' a 5 utilizando la función parseInt (casteo explícito o parseo)
+// Luego el operador + suma los dos números y termina por mostrar 10.9
+// Lo que nos dice que estamos cometiendo un error por redondeo
+var14 = var12 + parseInt(var13)
+console.log(var14)
