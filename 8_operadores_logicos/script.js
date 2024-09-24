@@ -1,39 +1,50 @@
+// Operador lógico de igualdad de valor
 let x = 5, y = 5
-
-let z = x == y; // OPERADOR ES IGUAL EN VALOR?
-console.log(z) // muestra true
+let z = x == y
+console.log(z)
 
 y = '5'
-z = x == y;
-console.log(z) // EL PROBLEMA ES QUE MUESTRA true CUANDO '5' ES UN STRING Y 5 ES UN ENTERO
+z = x == y
+// La siguiente línea muestra true cuando debería mostrar false porque 5 no es igual a '5'
+console.log(z)
 
-// SOLUCION
-z = x === y; // OPERADOR ES IGUAL EN VALOR Y TIPO?
-console.log(z) // muestra false
+// Operador lógico de igualdad de valor y tipo que soluciona el problema anterior
+z = x === y
+console.log(z)
 
-y = 5
-z = x != y; // OPERADOR SON DISTINTOS?
-console.log(z) // muestra false
+// Operador lógico de valor distinto
+y = 9
+z = x != y
+console.log(z)
 
-z = x > y // OPERADOR ES MAYOR?
-console.log(z) // muestra false
+// Operador lógico de negación
+console.log(!z)
 
-z = x < y // OPERADOR ES MENOR?
-console.log(z) // muestra false
+// Operador lógico de mayor
+z = x > y
+console.log(z)
 
-z = x <= y // OPERADOR ES MENOR O IGUAL?
-console.log(z) // muestra true
+// Operador lógico de menor
+z = x < y
+console.log(z)
 
-z = x >= y // OPERADOR ES MAYOR O IGUAL?
-console.log(z) // muestra true
+// Operador lógico de mayor o igual
+z = x >= y
+console.log(z)
 
+// Operador lógico de menor o igual
+z = x <= y
+console.log(z)
+
+// Operador AND
+// Todas las condiciones deben ser verdaderas para que el resultado sea verdadero
 let a = 5
 let b = 9
 let c = 5
-let d = a < b && b > c // OPERADOR AND
-console.log(d) // muestra true porque ambas condiciones son true
+let d = a < b && b > c
+console.log(d)
 
-d = a < b || b == c // OPERADOR OR
-console.log(d) // muestra true porque basta con que una condicion sea true
-
-console.log(!d) // OPERADOR NOT
+// Operador OR
+// Basta con que una condición sea verdadera para que el resultado sea verdadero
+d = a < b || b == c
+console.log(d)
