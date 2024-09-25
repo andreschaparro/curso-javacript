@@ -34,25 +34,25 @@ console.log(var8)
 // Mezcla de números y strings
 let var9 = 5
 let var10 = '5'
-// La siguiente línea convierte 5 a '5' (casteo implícito)
+// La siguiente línea convierte 5 a '5' (parseo implícito)
 // Luego el operador + concatena los dos strings y termina por mostrar '55'
 let var11 = var9 + var10
 console.log(var11)
 
-// La siguiente línea convierte '5' a 5 utilizando la función parseInt (casteo explícito o parseo)
+// La siguiente línea convierte '5' a 5 utilizando la función parseInt (parseo explícito)
 // Luego el operador + suma los dos números y termina por mostrar 10
 var11 = var9 + parseInt(var10)
 console.log(var11)
 
-// La siguiente línea convierte '5.5' a 5.5 utilizando la función parseFloat (casteo explícito o parseo)
+// La siguiente línea convierte '5.5' a 5.5 utilizando la función parseFloat (parseo explícito)
 // Luego el operador + suma los dos números y termina por mostrar 11.4
 let var12 = 5.9
 let var13 = '5.5'
 let var14 = var12 + parseFloat(var13)
 console.log(var14)
 
-// La siguiente línea convierte '5.5' a 5 utilizando la función parseInt (casteo explícito o parseo)
+// La siguiente línea convierte '5.5' a 5 utilizando la función parseInt (parseo explícito)
 // Luego el operador + suma los dos números y termina por mostrar 10.9
-// Lo que nos dice que estamos cometiendo un error por redondeo
+// Por lo que que estamos cometiendo un error por redondeo
 var14 = var12 + parseInt(var13)
 console.log(var14)
