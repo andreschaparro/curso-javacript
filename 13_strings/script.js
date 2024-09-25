@@ -1,79 +1,75 @@
-// STRINGS
+// La siguiente línea coloca un carácter ' dentro de un string utilizando la barra de escape
+console.log('Let\'s do it')
 
-// Colocar una ' dentro de '' por escape (sin utilizado a otro tipo de comillas)
-let string1 = 'Let\'s do it'
-console.log(string1)
+// La siguiente línea coloca un carácter \ dentro de un string
+console.log('El carácter con el que se escapa es \\')
 
-// Colocar una \ dentro de un string por escape
-let string2 = 'El simbolo con el que se escapa es \\'
-console.log(string2)
+// La siguiente línea coloca un salto de línea y una tabulación dentro de un string
+let textoMultilinea = 'Esto está arriba\n\tEsto está abajo y desplazado'
+console.log(textoMultilinea)
 
-// Colocar un salto de linea y una tabulacion dentro de un string
-let string3 = 'Esto esta arriba\n\tEsto esta abajo'
-console.log(string3)
+// Las siguientes líneas muestran como obtener el tamaño de un string a partir de su propiedad length
+let texto1 = 'Murciélago'
+console.log(texto1, 'tiene', texto1.length, 'caracteres')
 
-// Longitud de un string
-let string4 = 'Murciélago'
-console.log(string4, 'tiene', string4.length, 'caracteres')
-let string5 = 'Murciélago '
-console.log(string5, 'tiene', string5.length, 'caracteres')
-let string6 = 'Murciélago\n'
-console.log(string6, 'tiene', string6.length, 'caracteres') // \n cuenta como un caracter
+let texto2 = 'Murciélago '
+console.log(texto2, 'tiene', texto2.length, 'caracteres')
 
-// Quedarnos con parte de un string
-let texto = "Educacion"
-let resultado = texto.slice(4, 7)
-// .slice(START, END)
-// Incluye a al caracter START y no incluye a END
-// Se cuenta como caracter 0 a la primera letra, igual que con los Arrays
-console.log(resultado) // muestra aci
-let resultado1 = texto.slice(-5, -2)
-// Si START y END son negativos se cuenta del ultimo caracter hacia atras
-console.log(resultado1) // muestra aci
+let texto3 = 'Murciélago \n'
+console.log(texto3, 'tiene', texto3.length, 'caracteres')
 
-// Reemplazar parte de un string
-const original = 'La educación es muy importante en Argentina'
-const reemplazo = original.replace('Argentina', 'el mundo')
-console.log(reemplazo)
+// El método slice de un string recorta parte del mismo
+let original = "Educacion"
+// El primer carácter dentro de un string tiene el índice 0
+let recortePositivo = original.slice(4, 7)
+console.log(recortePositivo)
+// El último carácter dentro de un string tiene el índice -1
+let recorteNegativo = original.slice(-5, -2)
+console.log(recorteNegativo)
 
-// Pasar todos los caracteres de un string a mayusculas
-console.log(reemplazo.toUpperCase())
+// El método replace de un string reemplaza parte del mismo
+let frase = 'La educación es muy importante en Argentina'
+let fraseModificada = frase.replace('Argentina', 'el mundo')
+console.log(fraseModificada)
 
-// Pasar todos los caracteres de un string a minusculas
-console.log(reemplazo.toLowerCase())
+// El método toUpperCase de un string convierte todos los caracteres a mayúsculas
+console.log(frase.toUpperCase())
 
-// Concatenar strings
-const parte1 = 'La educación es muy importante en '
-const parte2 = 'Argentina'
-const parte3 = 'el mundo'
-const conca1 = parte1 + parte2
-const conca2 = parte1.concat(parte3)
-console.log(conca1)
-console.log(conca2)
+// El método toUpperCase de un string convierte todos los caracteres a minúsculas
+console.log(frase.toLowerCase())
 
-// Eliminar espacios de mas la principio y final de un string
-const parte4 = '    La educación es muy importante en Argentina      '
-const limpio1 = parte4.trim().toLocaleUpperCase() // modificaciones en cascada
-console.log(limpio1)
+// Las siguientes líneas muestran como concatenar strings con el operador aritmético de la suma o con el método concat
+let parte1 = 'La educación es muy importante en '
+let parte2 = 'Estados Unidos'
+let parte3 = 'España'
 
-// Eliminar espacios de mas unicamente al inicio de un string
-const limpio2 = parte4.trimStart()
-console.log(limpio2)
+frase = parte1 + parte2
+console.log(frase)
+frase = parte1.concat(parte3)
+console.log(frase)
 
-// Eliminar espacios de mas unicamente al final de un string
-const limpio3 = parte4.trimEnd()
-console.log(limpio3)
+// El método trim elimina los caracteres en blanco tanto al principio como al final de un string
+frase = '    La educación es muy importante en Italia      '
+console.log(frase.trim())
 
-// Obtener el caracter que esta en una determinada posicion de un string
-const limpio4 = parte4.trim()
-console.log(limpio4.charAt(5))
-console.log(limpio4[5])
+// El método trimStart elimina los caracteres en blanco al principio de un string
+console.log(frase.trimStart())
 
-// Particionar un string utilizando un separador
-const recibido = 'Este texto te lo mando el backend. Este texto es importante. Dividi el texto'
-console.log(recibido.split('.')) // el separador es un caracter
-console.log(recibido.split('. ')) // el separador es otro string
-console.log(recibido.split('')) // separa letra por letra
-// En todos los casos el resultado es un Array de strings
+// El método trimEnd elimina los caracteres en blanco al final de un string
+console.log(frase.trimEnd())
 
-// Hacer el TP1: Calculadora
+// El método charAt muestra el carácter que se encuentra en un determinado índice
+let abecedario = "abcdefghijklmñopqrstuvwxyz"
+console.log(abecedario.charAt(5))
+
+// La siguiente línea manipula el string como si fuese un Array para generar el mismo resultado que al utilizar el método charAt
+console.log(abecedario[5])
+
+// El método split separa en varias partes un string y las almacena en un Array
+const mensajeRecibido = 'Este texto te lo mando el backend. Este texto es importante. Dividí el texto'
+// En la siguiente línea se utiliza un carácter como separador
+console.log(mensajeRecibido.split('.'))
+// En la siguiente línea se utiliza un string como separador
+console.log(mensajeRecibido.split('. '))
+// En la siguiente línea cada parte va a contener solo un carácter
+console.log(mensajeRecibido.split(''))
