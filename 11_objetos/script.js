@@ -1,72 +1,80 @@
-// Crear objetos (guardan pares "clave: valor" que representan atributos de algo de la realidad)
-
+// Un objeto contiene propiedades
+// Cada propiedad es un conjunto clave-valor
+// El valor puede ser de cualquiera de los tipos de datos que vimos o incluso una función
 const auto1 = {
-    marca: 'FIAT',
-    modelo: 'UNO',
-    peso: 1000,
+    marca: 'Fiat',
+    modelo: 'Uno',
+    peso: 895,
+    color: 'Blanco'
+}
+
+let auto2 = {
+    marca: 'Renault',
+    modelo: '12',
+    peso: 850,
     color: 'Rojo'
 }
 
-const auto2 = {
-    marca: 'RENAULT',
-    modelo: '12',
-    peso: 1100,
-    color: 'MARRON'
-}
+console.log('auto1', auto1)
+console.log('auto2', auto2)
 
-console.log('Auto 1', auto1);
-console.log('Auto 2', auto2);
+// En las siguientes líneas se muestra como obtener el valor de una propiedad
+console.log('El color del auto1 es', auto1.color)
+console.log('El peso del auto2 es', auto2['peso'])
 
-// Consultar cuanto vale un atributo de un objeto
+// En las siguientes líneas se muestra como se puede modificar el valor de una propiedad
+// No importa si el objeto se declaró como const o let
+auto1.color = 'Gris'
+auto2.peso = 900
 
-console.log('El color del auto1 es', auto1.color); // con .atributo
-console.log('La marca del auto 2 es', auto2['marca']); // con ['atributo']
+console.log('auto1', auto1)
+console.log('El color del auto1 es', auto1.color)
 
-// Modificar un atributo de un objeto (AUNQUE EL OBJETO SEA UN CONST)
+console.log('auto2', auto2)
+console.log('El peso del auto2 es', auto2['peso'])
 
-auto1.marca = 'BWM';
-auto1.modelo = 'X5';
-
-console.log('Auto 1', auto1);
-
-// Crear un objeto con una propiedad del tipo Array (lista)
-
-const vendedor1 = {
+// En las siguientes líneas se crea un objeto donde el valor de una propiedad es un Array
+let vendedor1 = {
     nombre: 'Pedro',
-    empresa: 'Auto S.A.',
+    apellido: 'González',
+    empresa: 'Autos S.A.',
     habilidadesBlandas: ['Carisma', 'Puntualidad']
 }
-console.log(vendedor1);
-console.log(vendedor1.habilidadesBlandas[0]); // imprime 'Carisma' el primer elemento del Array habilidadesBlandas
 
-// Crear un objeto con una funcion dentro
+console.log(vendedor1)
+// En la siguiente línea se muestra como acceder al primer elemento del Array
+console.log(vendedor1.habilidadesBlandas[0])
 
-const vendedor2 = {
+// En las siguientes líneas se crea un objeto donde el valor de una propiedad es una función que no retorna nada
+let vendedor2 = {
     nombre: 'Ricardo',
-    apellido: 'Gonzalez',
-    empresa: 'Auto S.A.',
-    habilidadesBlandas: ['Carisma', 'Puntualidad'],
+    apellido: 'González',
+    empresa: 'Autos S.A.',
+    habilidadesBlandas: ['Trabajo en equipo', 'Gestión del tiempo'],
     vender: function () {
-        console.log('Ricardo a vendido un auto');
+        console.log('Ricardo ha vendido un auto')
     }
 }
-vendedor2.vender();
 
-// Crear un objeto con una funcion dentro que emplea datos del mismo internamente y retorna un valor
+console.log(vendedor2)
+// En la siguiente línea se muestra como llamar a la función a través de su clave
+vendedor2.vender()
 
+// En las siguientes líneas se crea un objeto donde el valor de una propiedad es una función que retorna un valor
 const vendedor3 = {
-    nombre: 'Lucas',
-    apellido: 'Rogriguez',
-    empresa: 'Auto S.A.',
-    habilidadesBlandas: ['Carisma', 'Puntualidad'],
+    nombre: 'Ana',
+    apellido: 'González',
+    empresa: 'Autos S.A.',
+    habilidadesBlandas: ['Liderazgo', 'Resolución de confligtos'],
     vender: function () {
-        return 'Lucas a vendido un auto';
+        // La palabra reservada this hace referencia a lo que está fuera de su scope (las llaves de la función), por lo que nos permitirá acceder a las propiedades del objeto
+        console.log(this.nombre, 'ha vendido un auto')
     },
     nombreCompleto: function () {
-        // this hace referencia a algo que esta fuera del scope de function
-        // y lo que esta inmediatamente afuera es el objeto
-        return this.nombre + " " + this.apellido;
+        return this.nombre + " " + this.apellido
     }
 }
-console.log(vendedor3.vender());
-console.log(vendedor3.nombreCompleto());
+
+console.log(vendedor3)
+vendedor3.vender()
+console.log(vendedor3.nombreCompleto())

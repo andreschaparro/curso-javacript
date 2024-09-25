@@ -56,7 +56,7 @@ let mostrarMensaje = () => console.log("Soy una función de flecha sin parámetr
 
 mostrarMensaje()
 
-// Función de flecha o Arrow Function que recibe mas de un parámetro
+// Función de flecha o Arrow Function que recibe más de un parámetro
 let mostrarSumaVersionFlecha = (x, y) => {
     console.log(`La suma de ${x} + ${y} es igual a`, x + y)
 }
