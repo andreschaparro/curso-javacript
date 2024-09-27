@@ -1,169 +1,164 @@
-// ARRAYS TAMBIEN CONOCIDOS COMO LISTAS O ARREGLOS
-// EJECUTAR node script.js
+// En las siguientes líneas se declara un Array y a continuación se le agregan elementos
+// Al declararlo, no es obligatorio declarar la cantidad de elementos que va a almacenar
+// Los elementos están ordenados a través de un índice que comienza en 0
+// El valor de los elementos puede ser de cualquiera de los tipos de datos que vimos
+let array = new Array(6)
 
-// Forma 1 de crearlos e inicializarlos
-// SIEMPRE USAR let con Arrays
-let array = new Array(6); // Array de 6 elementos
-array[0] = "Curso de HTML"; // Se cuenta desde el 0 la posicion de cada elemento
-array[1] = "Curso de CS";
-array[2] = "Curso de JS";
+array[0] = "HTML"
+array[1] = "CS"
+array[2] = "JS"
 
-console.log(array); // Va a mostrar los 3 elementos anteriores separados por coma y 3 elementos vacios
-console.log(array[4]); // Los elementos vacios van a ser undefined
+console.log(array)
+console.log(array[4])
 
-array[3] = 46; // No hay problema en mezclar tipos de datos dentro de un array
-console.log(array);
+array[3] = 48
 
-array[4] = { nombre: 'Pedro' }; // Objeto dentro de un array
-console.log(array);
+array[4] = {
+    nombre: 'Pedro',
+    apellido: 'González'
+}
+console.log(array)
 
-array[5] = [1, 2, 3, 4, 5, 6]; // Array anidado
-console.log(array);
+// En la siguiente línea se declara un Array y se le agregan elementos en una misma sentencia
+array[5] = [1, 2, 3, 4, 5, 6]
+console.log(array)
 
-console.log(array.length); // Longitud del array con la propiedad .length
+// En la siguiente línea se obtiene el tamaño de un Array a partir de su propiedad length como si fuese un string
+console.log(array.length)
 
-// Forma 2 de crearlos e inicializarlos
-array = [9, 5, 2, 7, 1]; // Se saco el let para que no de error
+// El método sort reordena los elementos de un Array en función de sus valores
+let arrayDeEnteros = [9, 5, 2, 7, 1]
+arrayDeEnteros.sort()
+console.log(arrayDeEnteros)
 
-array = ['Juan', 'Ricardo', 'Benjamin', 'Bruno', 'Manuel'];
-console.log(array.sort()); // Tambien funcion el metodo .sort()
+let arrayDeStrings = ['Juan', 'Ricardo', 'Benjamin', 'Bruno', 'Manuel']
+arrayDeStrings.sort()
+console.log(arrayDeStrings)
 
-console.log(array[array.length - 1]); // Forma de acceder al utlimo elemento de un Array
+// En la siguiente línea se accede al último elemento de un Array
+console.log(arrayDeStrings[arrayDeStrings.length - 1])
 
-// EJECUTAR EL LIVE SERVER PARA VER COMO SE INYECTA HTML DESDE JS
-// let array = ['Levantarse', 'Comer', 'Estudiar', 'Dormir'];
-// let texto = '';
-// for (let index = 0; index < array.length; index++) { // Bucle for para recorrer el Array elemento por elemento
-//     texto += '<li>' + array[index] + '</li>'; // Se agregar un elemento li por cada elemento del Array
+// En las siguientes líneas se inyecta código HTML desde JS
+// Descomentar el código y probarlo con el Live Server
+// let actividades = ['Levantarse', 'Comer', 'Estudiar', 'Dormir']
+// let codigoHTML = ''
+// for (let index = 0; index < actividades.length; index++) {
+//     codigoHTML += '<li>' + actividades[index] + '</li>'
 // }
-// document.getElementById('seleccionable').innerHTML = texto;
+// document.getElementById('listaOrdenada').innerHTML = codigoHTML
 
-array = ['HTML', 'CSS', 'JS'];
-array[array.length] = 'REACT'; // Forma de agregar un elemento al final del Array
-array[8] = 'SQL'; // Rellena con undefined hasta la posicion que le indicamos
-console.log(array);
+// En la siguiente línea se agrega un elemento al final de un Array
+arrayDeStrings[arrayDeStrings.length] = 'Pedro'
 
-// METODO FILTER
-array = ['Manzana', 'Naranja', 'Manzana', 'Manzana'];
-let resultado = array.filter(x => x == 'Manzana'); // Debe recibir una callback (funcion de flecha) que sirva para quedarnos con algunos elementos del Array
-console.log(resultado);
+// En la siguiente línea se agrega un elemento a un Array y como consecuencia se inyectan elementos con el valor undefined de forma implícita
+arrayDeStrings[10] = 'Gustavo'
+console.log(arrayDeStrings)
+console.log(arrayDeStrings[9])
 
-array = [
-    { nombre: 'Pedro', Apellido: 'Gonzalez' },
-    { nombre: 'Maria', Apellido: 'Gonzalez' },
-    { nombre: 'Lucia', Apellido: 'Gonzalez' },
-    { nombre: 'Ricardo', Apellido: 'Perez' },
-    { nombre: 'Lucas', Apellido: 'Ramirez' },
-    { nombre: 'Fernanda', Apellido: 'Argento' },
-];
-resultado = array.filter(x => x.Apellido == 'Gonzalez'); // Si los elementos son objetos podemos filtrarlos por el valor de un atributo
-for (let index = 0; index < resultado.length; index++) { // Se muestra un atributo de los elementos filtrados
-    let element = resultado[index];
-    console.log(element.nombre);
+// El método filter se queda con todos los elementos de un Array que cumplen con la condición dada por una función de callback
+let frutas = ['Manzana', 'Naranja', 'Manzana', 'Manzana']
+let resultado = frutas.filter(x => x == 'Manzana')
+console.log(resultado)
+
+let empleados = [
+    { nombre: 'Pedro', apellido: 'González' },
+    { nombre: 'Maria', apellido: 'González' },
+    { nombre: 'Lucia', apellido: 'González' },
+    { nombre: 'Ricardo', apellido: 'Pérez' },
+    { nombre: 'Lucas', apellido: 'Castellano' },
+    { nombre: 'Fernanda', apellido: 'Rodríguez' },
+]
+resultado = empleados.filter(x => x.apellido == 'González')
+for (let index = 0; index < resultado.length; index++) {
+    console.log(resultado[index].nombre)
 }
 
-// METODO MAP
-array = ['Manzana', 'Manzana', 'Manzana', 'Manzana'];
-resultado = array.map(x => { // Debe recibir una callback (funcion de flecha) que sirva para seleccionar algunos elementos del Array y cambiar sus valores
-    if (x == 'Manzana') return 'Naranja';
-});
-console.log(resultado);
+// El método map recorre cada uno de los elementos de un Array y ejecuta una función de callback sobre ellos
+frutas = ['Manzana', 'Manzana', 'Manzana', 'Manzana']
+resultado = frutas.map(x => {
+    if (x == 'Manzana') return 'Naranja'
+})
+console.log(resultado)
 
-// METODO FILL
-array = ['Manzana', 'Manzana', 'Manzana', 'Manzana'];
-resultado = array.fill('Naranja', 1); // Sustituye los elementos del Array a partir de un cierto indice
-console.log(resultado);
+// El método fill reemplaza los elementos de un Array a partir de cierto índice
+frutas = ['Manzana', 'Manzana', 'Manzana', 'Manzana']
+resultado = frutas.fill('Naranja', 1)
+console.log(resultado)
 
-// METODO FIND
-array = ['Manzana', 'Naranja', 'Naranja', 'Manzana'];
-resultado = array.find(x => x == 'Naranja'); // Debe recibir una callback (funcion de flecha) que sirva para quedarnos con la primera aparicion de un elemento del Array
-console.log(resultado);
+// El método find devuelve el primer elemento de un Array que cumple con la condición dada por una función de callback
+frutas = ['Manzana', 'Naranja', 'Naranja', 'Manzana']
+let elemento = frutas.find(x => x == 'Naranja')
+console.log(elemento)
 
-array = [
-    { nombre: 'Pedro', Apellido: 'Gonzalez' },
-    { nombre: 'Maria', Apellido: 'Gonzalez' },
-    { nombre: 'Lucia', Apellido: 'Gonzalez' },
-    { nombre: 'Ricardo', Apellido: 'Perez' },
-    { nombre: 'Lucas', Apellido: 'Ramirez' },
-    { nombre: 'Fernanda', Apellido: 'Argento' },
-];
-resultado = array.find(x => x.Apellido == 'Gonzalez');
-console.log(resultado.nombre);
+// El método findIndex devuelve el índice del primer elemento de un Array que cumple con la condición dada por una función de callback
+frutas = ['Manzana', 'Naranja', 'Manzana', 'Manzana']
+let indice = frutas.findIndex(x => x == 'Naranja')
+console.log(indice)
+console.log(frutas[indice])
 
-// METODO FINDINDEX
-array = ['Manzana', 'Naranja', 'Manzana', 'Manzana'];
-resultado = array.findIndex(x => x == 'Naranja'); // Debe recibir una callback (funcion de flecha) que sirva para quedarnos con el indice de la primera aparicion de un elemento del Array
-console.log(resultado);
+// El método some devuelve true si al menos un elemento en un Array cumple con la condición dada por una función de callback
+frutas = ['Manzana', 'Manzana', 'Naranja', 'Naranja']
+let booleano = frutas.some(x => x == 'Naranja')
+console.log(booleano)
 
-// METODO SOME
-array = ['Manzana', 'Manzana', 'Naranja', 'Naranja'];
-resultado = array.some(x => x == 'Naranja'); // Debe recibir una callback (funcion de flecha) que sirva para saber si se encontro al menos con un elemento en el Array y en ese caso devolver true
-console.log(resultado);
+// El método every devuelve true si hay todos los elementos en un Array cumplen con la condición dada por una función de callback
+frutas = ['Naranja', 'Manzana', 'Manzana', 'Manzana']
+booleano = frutas.every(x => x == 'Naranja')
+console.log(booleano)
 
-// METODO EVERY
-array = ['Naranja', 'Manzana', 'Manzana', 'Manzana'];
-resultado = array.every(x => x == 'Naranja'); // Debe recibir una callback (funcion de flecha) que sirva para saber si se encontro al menos con un elemento diferente al indicado en el Array y en ese caso devolver false
-console.log(resultado);
+// El método pop devuelve el último elemento de un Array y lo elimina del mismo
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera']
+elemento = frutas.pop()
+console.log(elemento)
+console.log(frutas)
 
-// METODO POP
-array = ['Manzana', 'Naranja', 'Limon', 'Pera'];
-resultado = array.pop(); // Nos devuelve el elemento final del Array y lo retira del mismo
-console.log(resultado);
-console.log(array);
+// El método shift devuelve el primer elemento de un Array y lo elimina del mismo
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera']
+elemento = frutas.shift()
+console.log(elemento)
+console.log(frutas)
 
-// METODO SHIFT
-array = ['Manzana', 'Naranja', 'Limon', 'Pera'];
-resultado = array.shift(); // Nos devuelve el elemento inicial del Array y lo retira del mismo
-console.log(resultado);
-console.log(array);
+// El método push agrega un nuevo elemento al final de un Array
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera']
+frutas.push('Ciruela')
+console.log(frutas)
 
-// METODO PUSH
-array = ['Manzana', 'Naranja', 'Limon', 'Pera'];
-array.push('Ciruela'); // Agrega un elemento al final del Array
-console.log(array);
+// El método shift agrega un nuevo elemento al inicio de un Array
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera']
+frutas.unshift('Ciruela')
+console.log(frutas)
 
-// METODO UNSHIFT
-array = ['Manzana', 'Naranja', 'Limon', 'Pera'];
-array.unshift('Ciruela'); // Agrega un elemento al inicio del Array
-console.log(array);
+// El método splice elimina un número de elementos de un Array a partir de un índice y puede insertar otros como relleno
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera']
+frutas.splice(2, 1, 'Ciruela')
+console.log(frutas)
 
-// METODO SPLICE
-array = ['Manzana', 'Naranja', 'Limon', 'Pera'];
-array.splice(2, 1, 'Ciruela'); // A partir de una posicion corta un determinado numero de elementos del Array y luego inserta nuevos desde la misma posicion
-console.log(array);
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera']
+frutas.splice(2, 1, 'Ciruela', 'Kiwi')
+console.log(frutas)
 
-array = ['Manzana', 'Naranja', 'Limon', 'Pera'];
-array.splice(2, 2, 'Ciruela');
-console.log(array);
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera']
+frutas.splice(2, 2, 'Ciruela', 'Kiwi')
+console.log(frutas)
 
-array = ['Manzana', 'Naranja', 'Limon', 'Pera'];
-array.splice(2, 0, 'Ciruela', 'Ananá'); // A partir de una posicion inserta elementos en el Array
-console.log(array);
+// El método slice recorta parte de un Array como si fuese un string
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera', 'Ciruela', 'Kiwi']
+resultado = frutas.slice(2, 4)
+console.log(resultado)
 
-// METODO SLICE
-array = ['Manzana', 'Naranja', 'Limon', 'Pera', 'Ciruela', 'Kiwi'];
-resultado = array.slice(2, 4); // Nos devuelve una parte del Array que va desde una posicion de inicio hasta una final
-console.log(resultado);
+// El método join genera un string a partir de concatenar cada elemento de un Array e intercalando otro string de unión
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera', 'Ciruela', 'Kiwi']
+console.log(frutas.join(' - '))
 
-// METODO JOIN
-array = ['Manzana', 'Naranja', 'Limon', 'Pera', 'Ciruela', 'Kiwi'];
-console.log(array.join(' - ')); // Devuelve un String que surge de la union de cada uno de los elementos del Array y un texto
+// El método concat concatena dos Arrays como si fuesen dos strings
+frutas = ['Manzana', 'Naranja', 'Limon', 'Pera', 'Ciruela', 'Kiwi']
+let verduras = ['Lechuga', 'Zapallo', 'Cebolla', 'Papa']
+console.log(frutas.concat(verduras))
 
-// METODO CONCAT
-let frutas = ['Manzana', 'Naranja', 'Limon', 'Pera', 'Ciruela', 'Kiwi'];
-let verduras = ['Lechuga', 'Zapallo', 'Cebolla', 'Papa'];
-console.log(frutas.concat(verduras)); // Devuelve un Array que surge de la concatenacion de otros dos
+// En las siguientes líneas se soluciona un problema que tiene el método sort al reordenar números mayores a 9
+arrayDeEnteros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+console.log(arrayDeEnteros.sort())
+console.log(arrayDeEnteros.sort((x, y) => x - y))
 
-// METODO SORT
-let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-console.log(numeros.sort()); // PROBLEMA ORDENANDO NUMEROS 1, 10, 11, 12, 13, 14, 15, 2 ...
-console.log(numeros.sort((x, y) => x - y)); // SOLUCION UTILIZANDO UNA FUNCION FLECHA QUE SOLO SE NECESITA CON NUMEROS, CON TEXTOS NO EXISTE ESTE PROBLEMA
-console.log(numeros.sort((x, y) => y - x)); // SOLUCION ORDEN DESCENDENTE
-
-let autos = [
-    { marca: 'FIAT', año: 2020 },
-    { marca: 'BMW', año: 2019 },
-    { marca: 'RENAULT', año: 2021 },
-    { marca: 'FORD', año: 2023 },
-];
-console.log(autos.sort((x, y) => x.año - y.año)); // Ordenamiento de un Array de Objetos utilizando del valor de un atributo numericos
+// En la siguiente línea se utiliza el método sort para reordenar números de forma descendente
+console.log(arrayDeEnteros.sort((x, y) => y - x))

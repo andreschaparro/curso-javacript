@@ -18,7 +18,7 @@ console.log(texto2, 'tiene', texto2.length, 'caracteres')
 let texto3 = 'Murciélago \n'
 console.log(texto3, 'tiene', texto3.length, 'caracteres')
 
-// El método slice de un string recorta parte del mismo
+// El método slice de un string recorta parte del mismo como si fuese un Array
 let original = "Educacion"
 // El primer carácter dentro de un string tiene el índice 0
 let recortePositivo = original.slice(4, 7)
