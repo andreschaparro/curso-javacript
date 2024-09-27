@@ -2,6 +2,7 @@
 // Al declararlo, no es obligatorio declarar la cantidad de elementos que va a almacenar
 // Los elementos están ordenados a través de un índice que comienza en 0
 // El valor de los elementos puede ser de cualquiera de los tipos de datos que vimos
+// Si se declaran los Array como const no se pueden modificar
 let array = new Array(6)
 
 array[0] = "HTML"
