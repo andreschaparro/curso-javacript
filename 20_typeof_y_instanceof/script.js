@@ -1,49 +1,54 @@
-// TYPEOF
-// EJECUTAR node script.js
+let string = typeof "Andrés"
+console.log(string)
 
-let a = typeof "Andrés";
-console.log(a); // es un string
+let decimal = typeof 3.14
+console.log(decimal)
 
-let b = typeof 3.14;
-console.log(b); // es un number
+// NaN es del tipo númerico
+let nan = typeof NaN
+console.log(nan)
 
-let c = typeof NaN;
-console.log(c); // es un number
+let booleano = typeof true
+console.log(booleano)
 
-let d = typeof true;
-console.log(d); // es un boolean
+// En general, todo lo que se pueda declarar con la palabra new va a ser un objeto
+// Un Array es del tipo objeto
+let array = typeof ['Ricardo', 'Pedro', 'María']
+console.log(array)
 
-let e = typeof ['Ricardo', 'Pedro', 'María'];
-console.log(e); // OJO da object porque el Array es un tipo de objecto de JS 
+let objeto = typeof { curso: 'JAVASCRIPT', proyectos: 5 }
+console.log(objeto)
 
-let f = typeof { curso: 'JAVASCRIPT' };
-console.log(f); // da object
+// Una fecha es del tipo objeto
+let fecha = typeof new Date()
+console.log(fecha)
 
-let g = typeof new Date();
-console.log(g); // OJO da object y en general todo lo que se pueda crear con el metodo new es un tipo de objecto de JS
+// Un Set es del tipo objeto
+let set = typeof new Set()
+console.log(set)
 
-let h = typeof function saludar() { console.log('Hola Mundo') };
-console.log(h); // da function
+// Un Map es del tipo objeto
+let map = typeof new Map()
+console.log(map)
 
-let i = typeof algo;
-console.log(i); // da undefined porque JS supone que algo es una variable
+// null es un caso especial y es del tipo objeto
+let nulo = typeof null
+console.log(nulo)
 
-let j = typeof null;
-console.log(j); // OJO da object por el null es un tipo de objecto de JS
+function saludar() {
+    console.log('Hola Mundo')
+}
 
-// INSTANCEOF PERMITE DIFERENCIAR ENTRE LOS TIPOS DE OBJETO DE JS
+let funcion = typeof saludar
+console.log(funcion)
 
-let k = [1, 2, 3, 4, 5];
-console.log(k instanceof Array);
+// Por defecto JS supone que Texto es una variable, y como no está definida, va a mostrar que su tipo es undefined
+let algo = typeof Texto
+console.log(algo)
 
-let l = new Date();
-console.log(l instanceof Date);
-
-let m = new Set();
-console.log(m instanceof Set);
-
-let n = new Map();
-console.log(n instanceof Map);
-
-// let o = null;
-// console.log(o instanceof null); // esto no se puede hacer porque null no tiene instancia es algo vacio
+// Con instanceof podemos diferenciar los diferentes tipos de objetos, excepto null
+console.log(array instanceof Array)
+console.log(objeto instanceof Object)
+console.log(fecha instanceof Date)
+console.log(set instanceof Set)
+console.log(map instanceof Map)
