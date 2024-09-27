@@ -1,46 +1,44 @@
-// SETS ES UN CONJUNTO UNICO DE ELEMENTOS ES DECIR QUE NO TIENE ELEMENTOS REPETIDOS Y SE SUELEN USAR PARA LIMPIAR ARRAYS
-// EJECUTAR node script.js
-let array = ['Pedro', 'Ricardo', 'María', 'Pedro', 'Ricardo', 'Ricardo']
-let conjunto = new Set(array);
-console.log(conjunto);
+// En la siguiente línea se van a eliminar los elementos repetidos de un Array utilizando un Set
+let conjunto = new Set(['Pedro', 'Ricardo', 'María', 'Pedro', 'Ricardo', 'Ricardo'])
+console.log(conjunto)
 
-// Agregar un elemento
-conjunto.add('Luciana');
-console.log(conjunto);
+// El método add agrega un elemento a un Set
+conjunto.add('Luciana')
+console.log(conjunto)
 
-// Borrar un elemento
-conjunto.delete('Pedro');
-console.log(conjunto);
+// El método delete elimina un elemento a un Set
+conjunto.delete('Pedro')
+console.log(conjunto)
 
-// Consultar si existe un elemento
-let pregunta = conjunto.has('Ricardo');
-console.log(pregunta);
+// El método has informa si existe un elemento dentro de un Set
+let pregunta = conjunto.has('Ricardo')
+console.log(pregunta)
 
-// Consulta cuantos elementos tiene
-console.log(conjunto.size);
+// La propiedad size devuelve el número de elementos que tiene un Set
+console.log(conjunto.size)
 
-// Volver a tener un array
-let nuevoArray = [...conjunto];
-console.log(nuevoArray);
+// En la siguiente línea se convierte un Set en un Array
+let nuevoArray = [...conjunto]
+console.log(nuevoArray)
 
-// MAPS ES UN CONJUNTO DE PARES CLAVE-VALOR PERO QUE NO SON OBJETOS
+// Un map almacena pares clave-valor donde cada clave debe ser única y pueden ser números o strings
 let mapa = new Map([
-    ['Computadores', 10],
+    ['Computadoras', 10],
     ['Tablets', 5],
     ['Celulares', 15],
-]);
-console.log(mapa);
+])
+console.log(mapa)
 
-// Agregar un par clave-valor
-mapa.set('Teclados', 20);
-console.log(mapa);
+// El método set agrega un par clave-valor al Map
+mapa.set('Teclados', 20)
+console.log(mapa)
 
-// Consulta cuantos pares clave-valor
-console.log(mapa.size);
+// El método delete elimina un par clave-valor al Map
+mapa.delete('Computadoras')
+console.log(mapa)
 
-// Borrar un par clave-valor
-mapa.delete('Computadoras');
-console.log(mapa);
+// El método has informa si existe un par clave-valor dentro de un Map a partir de la clave
+console.log(mapa.has('Monitores'))
 
-// Consultar si existe un par clave-valor
-console.log(mapa.has('Monitores'));
+// La propiedad size devuelve el número de pares clave-valor que tiene el Map
+console.log(mapa.size)
