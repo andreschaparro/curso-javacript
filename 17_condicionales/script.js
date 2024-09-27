@@ -1,5 +1,6 @@
 let edad = 19
 
+// Escribir if y seleccionar If-Else Statement
 if (edad >= 18) {
     console.log('Puedes ingresar al boliche')
 } else {
@@ -17,6 +18,8 @@ if (edad >= 18 && edad < 60) {
 }
 
 let estiloDeMusica = 'Punk'
+
+// Escribir switch y seleccionar Switch Statement
 switch (estiloDeMusica) {
     case 'Punk':
         console.log('Te recomiendo los Ramones')

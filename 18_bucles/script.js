@@ -1,65 +1,59 @@
-// BUCLES (FOR-WHILE-DO WHILE)
-// EJECUTAR node script.js
+let tecnologias = ['HTML', 'CSS', 'JAVSCRIPT', 'REACT', 'TYPESCRIPT']
 
-// FOR PARA RECORRER UN ARRAY
-let tecnologias = ['HTML', 'CSS', 'JAVSCRIPT', 'REACT', 'ANGULAR'];
-for (let index = 0; index < tecnologias.length; index++) { // Seleccionar For Loop para que se cree la estructura
-    console.log(tecnologias[index]);
-}
-
-let texto = ''; // Forma de imprimir los elementos en una sola linea
+// Escribir for y seleccionar For Loop
 for (let index = 0; index < tecnologias.length; index++) {
-    texto += tecnologias[index];
-    if (index < tecnologias.length - 1) {
-        texto += ', ';
-    }
-}
-console.log(texto);
-
-// FOR OF O FOR MENOS VERBORRAGICO PARA RECORRER UN ARRAY
-for (tecnologia of tecnologias) {
-    console.log(tecnologia);
+    console.log(tecnologias[index])
 }
 
-// FOR IN PARA RECORRER OBJETOS
-const alumno = {
+// En las siguientes líneas se muestra una versión menos verbosa del bucle for
+// Escribir for y seleccionar For-Of Loop
+for (const element of tecnologias) {
+    console.log(element)
+}
+
+// En las siguientes líneas se muestra como recorrer un objeto
+let alumno = {
     name: 'Ricardo',
     edad: 25,
     tecnologias: ['HTML', 'CSS'],
 }
 
-for (key in alumno) {
-    console.log(alumno[key]);
+// Escribir for y seleccionar For-In Loop
+for (const key in alumno) {
+    console.log(key, alumno[key])
 }
 
-// FOR EACH PARA RECORRER UN ARRAY
-let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-numeros.forEach(numero => { // Seleccionar For-Each Loop using
-    console.log(numero);
-});
+// En las siguientes líneas se muestra una versión alternativa del bucle for que utiliza un función de flecha
+let numeros = [1, 2, 3, 4, 5]
 
-// WHILE SIRVE COMO BUCLE LOGICO NO ES PARA RECORRER ALGO
-let edad = 0;
-while (edad < 18) {
-    console.log(`Tienes ${edad} años y aún eres menor de edad`);
-    edad++; // OJO PORQUE SI NO LO PONEMOS ENTRAMOS A UN BUCLE INFINITO Y SE TRABA EL NAVEGADOR O EL VISUAL STUDIO CODE
+// Escribir for y seleccionar foreach =>
+numeros.forEach(element => {
+    console.log(element)
+})
+
+let edad = 0
+
+// Escribir while y seleccionar While Statement =>
+while (edad < 5) {
+    console.log(`Tienes ${edad} años`)
+    edad++
 }
-console.log(`Tienes ${edad} años y ya eres mayor de edad`);
+console.log(`Ya tienes ${edad} años`)
 
-// DO WHILE PRIMERO EJECUTA y DESPUES COMPRUEBA LA CONDICION
-// ES DECIR ES AL REVES DEL WHILE QUE PRIMERO COMPRUEBA Y DESPUES EJECUTA
-edad = 0;
+edad = 0
+
+// Escribir do y seleccionar Do-While Statement =>
 do {
-    console.log(`Tienes ${edad} años y aún eres menor de edad`);
-    edad++;
-} while (edad < 18);
-console.log(`Tienes ${edad} años y ya eres mayor de edad`);
+    console.log(`Tienes ${edad} años`)
+    edad++
+} while (edad < 5)
+console.log(`Ya tienes ${edad} años`)
 
-// BREAK ROMPE LOS BUCLES
-edad = 0;
-while (edad < 30) {
-    console.log(edad);
-    edad++;
-    if (edad == 25) break;
+edad = 0
+while (edad < 10) {
+    console.log(`Tienes ${edad} años`)
+    edad++
+    // La sentencia break rompe la ejecución de cualquier bucle
+    if (edad == 5) break
 }
-console.log(`Saliste del bucle porque tenes ${edad} años`);
+console.log(`Saliste del bucle porque ya tienes ${edad} años`)
