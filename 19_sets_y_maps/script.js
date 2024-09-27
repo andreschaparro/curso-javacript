@@ -22,6 +22,7 @@ let nuevoArray = [...conjunto]
 console.log(nuevoArray)
 
 // Un map almacena pares clave-valor donde cada clave debe ser única y pueden ser números o strings
+// Los maps únicamente se utilizan cuando los objetos no nos sirven
 let mapa = new Map([
     ['Computadoras', 10],
     ['Tablets', 5],
