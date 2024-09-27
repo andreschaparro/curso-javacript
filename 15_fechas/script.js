@@ -1,33 +1,32 @@
-// FECHAS o DATE
-// EJECUTAR node script.js
+let ahora = new Date()
+console.log(ahora)
 
-// FECHA DE AHORA
-const ahora = new Date();
-console.log(ahora);
+// En la siguiente línea se crea una fecha a partir de un string con el formato ISO 'AAAA-MM-DD'
+let fecha = new Date('2021-05-01')
+console.log(fecha)
 
-// CREAR FECHA A PARTIR DE UNA STRING
-const fecha = new Date('2021-05-01'); // Formato del String: AAAA-MM-DD (ISO)
-console.log(fecha);
+// El método getFullYear nos devuelve el año en el que estamos
+console.log(ahora.getFullYear())
 
-// OTROS FORMATOS DE STRING PARA FECHAS
-// SHORT 03/15/2020 OJO 03 es el MES!!!
-// LONG Mar 25 2020
+// El método getMonth nos devuelve el mes en el que estamos -1
+let meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+console.log(meses[ahora.getMonth()])
 
-// METODOS GET
-console.log(ahora.getFullYear()); // Nos devuelve el año en el que estamos
-console.log(ahora.getMonth()); // Nos devuelve el mes en el que estamos -1 porque es el indice de un Array, es decir, Agosto se corresponderia al indice 7
-let meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-console.log(meses[ahora.getMonth()]); // Conversion de numero de mes al nombre del mismo
+// El método getDate nos devuelve el día en el que estamos
+console.log(ahora.getDate())
 
-console.log(ahora.getDate()); // Nos devuelve el dia en el que estamos
+let numeroDeMes = ahora.getMonth() + 1
+let fechaEnFormatoLatino = ahora.getDate() + '/' + numeroDeMes + '/' + ahora.getFullYear()
+console.log(fechaEnFormatoLatino)
 
-let mes = ahora.getMonth() + 1;
-let resultado = ahora.getDate() + '/' + mes + '/' + ahora.getFullYear();
-console.log(resultado);
+// El método setFullYear nos permite modificar el año
+ahora.setFullYear('2025')
 
-// METODOS SET
-ahora.setFullYear('2029'); // Nos permite modificar el año
-ahora.setMonth(8 - 1); // Nos permite modificar el mes (no olvidarse de restar 1 porque se pasa el indice de un vector)
-ahora.setDate(10); // Nos permite modificar el dia
-resultado = ahora.getDate() + ' de ' + meses[ahora.getMonth()] + ' de ' + ahora.getFullYear();
-console.log(resultado);
+// El método setMonth nos permite modificar el mes considerando que enero es 0
+ahora.setMonth(5 - 1)
+
+// El método setDate nos permite modificar el día
+ahora.setDate(25)
+
+let fechaEnFormatoTexto = ahora.getDate() + ' de ' + meses[ahora.getMonth()] + ' de ' + ahora.getFullYear()
+console.log(fechaEnFormatoTexto)
