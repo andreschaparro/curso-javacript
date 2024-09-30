@@ -1,50 +1,44 @@
-// MANEJO DE ERRORES CON TRY-CATCH-FINALLY
-// EJECUTAR node script.js
-
+// En las siguientes líneas se muestra el manejo de errores
 try {
-    // PONEMOS EL CODIGO QUE PUEDE FALLAR, POR EJEMPLO, EL LLAMADO A UN BACKEND A TRAVES DE UNA API
-    console.log('Llamando al backend');
+    console.log('Llamando al backend')
+    console.log('El backend nos responde: salió todo bien')
 } catch {
-    // TOMAMOS EL ERROR Y HACEMOS ALGO QUE NOS PAREZCA CORRECTO
-    console.log('Algo falló');
+    console.log('Algo falló')
 } finally {
-    // SE EJECUTA SIEMPRE POR MAS QUE FALLE O NO
-    console.log('Se ejecuta siempre');
+    console.log('Se ejecuta siempre')
 }
 
-// FORMA DE FORZAR UN FALLO CON throw()
-// Esto se usa cuando el backend devuelve un mensaje de error
+// En las siguientes líneas se fuerza a que se produzca un error
 try {
-    console.log('Llamando al backend');
-    throw ('Este cliente no esta apto para la compra');
-} catch (error) { // EN error VA A APARECER EL MENSAJE QUE PUSIMOS EN EL throw
-    console.log('Algo falló', error);
+    console.log('Llamando al backend')
+    throw ('El backend nos responde: mensaje de error')
+} catch {
+    console.log('Algo falló')
 } finally {
-    console.log('Se ejecuta siempre');
+    console.log('Se ejecuta siempre')
 }
 
-// FORMA DE DEMORAR UNA EJECUCION CON setTimeout()
+// En las siguientes líneas se utiliza setTimeout para simular la demora en las respuestas del backend con el objetivo de mostrar el comportamiento síncrono de JS
 try {
-    console.log('Llamando al backend');
+    console.log('Llamando al backend')
     setTimeout(() => {
-        console.log('El backend nos responde:');
-        console.log('Este cliente es apto para la compra');
-    }, 1000); // tiempo de demora en milisegundos
+        console.log('El backend nos responde: salió todo bien')
+    }, 1000)
 } catch (error) {
-    console.log('Algo falló', error);
+    console.log('Algo falló')
 } finally {
-    console.log('Se ejecuta siempre'); // ESTO SE VA A EJECUTAR ANTES DE LO QUE ESTA EN EL try POR CULPA DEL setTimeout PORQUE JS ES SINCRONO
+    console.log('Se ejecuta siempre')
 }
 
-// EL SIGUIENTE CODIGO EXPLOTA PORQUE EL catch ES SINCRONO Y SE EJECUTA ANTES DE QUE LLEGUE EL throw
 try {
-    console.log('Llamando al backend');
+    console.log('Llamando al backend')
     setTimeout(() => {
-        console.log('El backend nos responde:');
-        throw ('Este cliente no esta apto para la compra');
-    }, 1000);
+        throw ('El backend nos responde: mensaje de error')
+    }, 2000);
 } catch (error) {
-    console.log('Algo falló', error);
+    console.log('Algo falló', error)
 } finally {
-    console.log('Se ejecuta siempre');
+    console.log('Se ejecuta siempre')
 }
+
+// Conclusión: no utilizar try, catch y finally con código asíncrono porque los finally se van a ejecutar antes de finalizar los try
