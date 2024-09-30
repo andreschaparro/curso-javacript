@@ -1,53 +1,61 @@
-// REGEX O EXPRESIONES REGULARES
-// EJECUTAR node script.js
-// CASO: UNA PALABRA DENTRO DE UN TEXTO
-let texto = 'Este curso es de Javascript';
-let busqueda = texto.search('Javascript');
-console.log(busqueda); // Devuelve la posición a partir de la cual aparece la palabra
+// El método search busca la primera aparición de un string dentro de otro utilizando una expresión regular
+let texto = 'Este curso es de Javascript'
+let posicion = texto.search(/Javascript/)
+console.log(posicion)
 
-busqueda = texto.search(/Javascript/);
-console.log(busqueda); // Devuelve la posición a partir de la cual aparece la palabra
+// El método search es case sensitive
+posicion = texto.search(/javascript/)
+console.log(posicion)
 
-busqueda = texto.search(/javascript/);
-console.log(busqueda); // En este caso no lo encuentra porque es case sensitive
+// El modificador i permite utilizar el método search sin case sensitive
+posicion = texto.search(/javascript/i)
+console.log(posicion)
 
-busqueda = texto.search(/javascript/i); // El modificador i es para ignorar el case sensitive
-console.log(busqueda);
+// Otros modificadores:
+// g: busca todas las apariciones
+// m: busca en más de una línea
 
-// Modificadores
-// i: ignorar case sensitive
-// g: buscar en todo el texto (no se detiene en el primer match)
-// m: busqueda multi-linea
+// El método test busca si existe un string dentro de otro utilizando una expresión regular
+let patron = /javascript/
+let match = patron.test(texto)
+console.log(match)
 
-// Metodo test() para saber si hay un match
-let pattern = /javascript/i;
-let resultado = pattern.test(texto);
-console.log(resultado); // Devuelve true
+patron = /javascript/i
+match = patron.test(texto)
+console.log(match)
 
-pattern = /javascript/;
-resultado = pattern.test(texto);
-console.log(resultado); // Devuelve false
+// El método exec busca un string dentro de otro utilizando una expresión regular y devuelve un Array con información del resultado
+patron = /javascript/
+let array = patron.exec(texto)
+console.log(array)
 
-// Metodo exec() que nos devuelve un Array con más información
-pattern = /javascript/i;
-resultado = pattern.exec(texto);
-console.log(resultado);
+patron = /javascript/i
+array = patron.exec(texto)
+console.log(array)
 
-// CASO: NUMERO DENTRO DE UN TEXTO
-texto = 'Numero de curso: 3';
-pattern = /[0-9]/;
-resultado = pattern.test(texto);
-console.log(resultado); // Devuelve true
+// En las siguientes líneas se busca si un string contiene un número entre 0 y 9
+texto = 'Número de curso: 3'
+patron = /[0-9]/
+match = patron.test(texto)
+console.log(match)
 
-texto = 'Numero de curso:';
-pattern = /\d/; // es lo mismo que [0-9]
-resultado = pattern.test(texto);
-console.log(resultado); // Devuelve false
+patron = /\d/
+match = patron.test(texto)
+console.log(match)
 
-// CASO: CORREOS ELECTRONICOS
-pattern = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-console.log(pattern.test('chaparroandres87@1.1')); // Devuelve false
-console.log(pattern.test('chaparroandres87@1.com')); // Devuelve false
-console.log(pattern.test('chaparroandres87')); // Devuelve false
-console.log(pattern.test('chaparroandres87@gmail')); // Devuelve false
-console.log(pattern.test('chaparroandres87@gmail.com')); // Devuelve true
+// En las siguientes líneas se busca comprobar si un string es un correo electrónico
+patron = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
+
+match = patron.test('alguien')
+console.log(match)
+
+match = patron.test('alguien@1.1')
+console.log(match)
+
+match = patron.test('alguien@gmail')
+console.log(match)
+
+match = patron.test('alguien@gmail.com')
+console.log(match)
+
+// Buscar patrones en internet
