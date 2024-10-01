@@ -1,99 +1,108 @@
-// PROMESAS PARA MANEJO DE EVENTOS ASINCRONICOS
-// SE USA CUANDO CONSUMIMOS DATOS DE UN BACKEND A TRAVES DE UNA API, APARECEN DEMORAS PARA RECIBIRLOS, Y NECESITAMOS MANTENER UN CIERTO ORDEN DE EJECUCION PARA PROCESARLOS
-// EJECUTAR node script.js
-// SINTAXIS
-let promesa1 = new Promise((response, reject) => { // La promise es un objeto de JS
-    let res = 'Esta es la respuesta del servicio'; // Esto puede ser cualquier cosa porque es lo que devuelve el backend
-    // response(res); // Comentar esta linea para probar el reject
-    reject('Fallo 1');
-});
+// En las siguientes líneas se muestra como atender una respuesta de un backend
+// Las promesas son otro tipo de objeto de JS que funcionan como try y catch pero para código asíncrono
+let promesa1 = new Promise((response, reject) => {
+    let resp = 'Salió todo bien 1'
+    response(resp)
+})
 
-promesa1.then(res => { // En res aparece el 'Esta es la respuesta del servicio'
-    console.log(res);
-}).catch(error => {  // En error aparece el 'Fallo'
-    console.error(error);
-});
+promesa1.then(res => {
+    console.log(res)
+}).catch(error => {
+    console.error(error)
+})
 
-// UNA RESPUESTA DEL BACKEND MAS REAL
 let promesa2 = new Promise((response, reject) => {
-    let resp = { // Lo que devolvería el backend
-        response: 200, // 200 indica éxito, 400 indica que hicimos mal la solicitud, 500 indica que falla el backend
-        description: 'Esta info es importante 2',
-    };
-    response(resp);
-    reject('Fallo 2');
-});
+    let resp = 'Algo falló 2'
+    reject(resp)
+})
 
 promesa2.then(res => {
-    console.log(res.description);
+    console.log(res)
 }).catch(error => {
-    console.error(error);
-});
+    console.error(error)
+})
 
-// CON UNA DEMORA VEMOS QUE FUNCIONA COMO EL TRY-CATCH PERO DE FORMA ASINCRONA
+// En las siguientes líneas se muestra como atender una respuesta con un formato más real de un backend
 let promesa3 = new Promise((response, reject) => {
-    setTimeout(() => {
-        let resp = {
-            response: 200,
-            description: 'Esta info es importante 3',
-        };
-        // response(resp);
-        reject('Fallo 3');
-    }, 3000);
-});
+    let resp = {
+        // Los códigos numéricos más típicos son: 200 (éxito), 400 (mal hecha la solicitud), y 500 (falla del backend)
+        response: 200,
+        description: 'Salió todo bien 3'
+    }
+    response(resp)
+})
 
 promesa3.then(res => {
-    console.log(res.description);
+    console.log(res.description)
 }).catch(error => {
-    console.warn(error);
-});
+    console.error(error)
+})
 
-// PROMESAS EN CASCADA O PIRAMIDE DE LA PERDICION PORQUE TIENE UNA SINTAXIS MUY POCO CLARA...
+// En las siguientes líneas se utiliza setTimeout para simular la demora en la respuesta de un backend
 let promesa4 = new Promise((response, reject) => {
     setTimeout(() => {
         let resp = {
             response: 200,
-            description: 'Esta info es importante 4',
-        };
-        response(resp);
-        reject('Fallo 4');
-    }, 3000);
-});
+            description: 'Salió todo bien 4',
+        }
+        response(resp)
+    }, 2500)
+})
 
+promesa4.then(res => {
+    console.log(res.description)
+}).catch(error => {
+    console.error(error)
+})
+
+// En las siguientes líneas se muestra como atender varias respuestas de un backend de forma secuencial
 let promesa5 = new Promise((response, reject) => {
     setTimeout(() => {
         let resp = {
             response: 200,
-            description: 'Esta info es importante pero suele demorar mucho 5',
-        };
-        response(resp);
-        reject('Fallo 5');
-    }, 5000);
-});
+            description: 'Salió todo bien 5',
+        }
+        response(resp)
+    }, 7500)
+})
 
 let promesa6 = new Promise((response, reject) => {
     setTimeout(() => {
         let resp = {
             response: 200,
-            description: 'Información rápida 6',
-        };
-        response(resp);
-        reject('Fallo 6');
-    }, 2500);
-});
+            description: 'Salió todo bien 6',
+        }
+        response(resp)
+    }, 10000)
+})
 
-promesa4.then(res => {
-    console.log(res.description);
-    promesa5.then(res => {
-        console.log(res.description);
-        promesa6.then(res => { // Esta se dispara inmediatamente después de la anterior debido a que se la recibió a los 2,5 segundos y ya va a estar disponible a los 5 segundos 
-            console.log(res.description);
+let promesa7 = new Promise((response, reject) => {
+    setTimeout(() => {
+        let resp = {
+            response: 200,
+            description: 'Salió todo bien 7',
+        }
+        response(resp)
+    }, 5000)
+})
+
+// La respuesta de la promesa5 se resuelve primero aunque sea la segunda en estar disponible
+promesa5.then(res => {
+    console.log(res.description)
+    // La respuesta de la promesa6 demora en resolverse porque es la tercera en estar disponible
+    promesa6.then(res => {
+        console.log(res.description)
+        // La respuesta de la promesa7 se resuelve inmediatamente después de la promesa6 porque es la primera en estar disponible
+        promesa7.then(res => {
+            console.log(res.description)
         }).catch(error => {
-            console.error(error);
-        });
+            console.error(error)
+        })
     }).catch(error => {
-        console.error(error);
-    });
+        console.error(error)
+    })
 }).catch(error => {
-    console.error(error);
-});
+    console.error(error)
+})
+
+// El código anterior tiene una sintaxis muy poco clara y se lo conoce como la pirámide de la perdición
