@@ -1,97 +1,102 @@
-// FETCH-APIS-JSON
-// EJECUTAR EL LIVE SERVER E INSPECCIONAR EL COMPORTAMIENTO DE LA RED
-// PARA PROBAR LOS EJEMPLOS QUITAR LOS COMENTARIOS
+// En las siguientes líneas se muestra como hacer una solicitud para leer datos (método GET) de una api con fetch
+// Al hacerla, fetch nos devuelve una promesa
+// https://jsonplaceholder.typicode.com/
+fetch('https://jsonplaceholder.typicode.com/users')
+    // json es un formato de intercambio de datos que utiliza una notación similar a la de los objetos de JS
+    // https://codebeautify.org/jsonviewer
+    .then(response => response.json())
+    .then(json => console.log(json))
 
-// LAS APIS NOS PERMITEN CONSUMIR DATOS DEL BACKEND O DE TERCEROS
-// LA SIGUIENTE API ES FALSA PERO SIRVER PARA HACER PRUEBAS: https://jsonplaceholder.typicode.com/
+// En las siguientes líneas se muestra el código numérico llamado status que vale 200
+fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => console.log(response))
 
-// FETCH POR DEFECTO UTILIZA EL METODO GET QUE SIRVE PARA LEER DATOS
-// fetch('https://jsonplaceholder.typicode.com/users') // FETCH NOS DEVUELVE UNA PROMESA
-//     .then(response => response.json()) // JSON ES UN FORMATO DE INTERCAMBIO DE DATOS QUE USA LA MISMA SINTAXIS QUE LOS OBJETOS DE JS Y EL METODO .json() NOS PERMITE RECUPERARLOS
-//     .then(json => console.log(json)); // NOS VA A MOSTRAR UN ARRAY DE OBJETOS
+// En las siguientes líneas se muestra el código numérico llamado status que vale 404 porque pasamos una url incorrecta
+fetch('https://jsonplaceholder.typicode.com/user')
+    .then(response => console.log(response))
 
-// fetch('https://jsonplaceholder.typicode.com/users')
-//     .then(response => console.log(response)); // VAMOS A VER EL 200 QUE INDICA EXITO Y EL JSON QUE VIMOS ANTES DENTRO DE LA RESPUESTA
+// En las siguientes líneas se muestra como hacer una query o consulta hardcodeada
+// Con la misma, se obtienen los comentarios del posteo cuyo postId vale 1
+fetch('https://jsonplaceholder.typicode.com/comments?postId=1')
+    .then(response => response.json())
+    .then(json => console.log(json))
 
-// QUERYS HARDCODEADAS CON APIS
-// fetch('https://jsonplaceholder.typicode.com/comments?postId=1') // Pide los comentarios del primer post
-//     .then(response => response.json())
-//     .then(json => console.log(json));
+// En las siguientes líneas se muestra como hacer una query o consulta de forma dinámica
+let urlBase = 'https://jsonplaceholder.typicode.com'
+let query = 'comments?postId=1'
 
-// QUERY SIN HARDCODEAR COMO SE USA EN JS
-// let urlBase = 'https://jsonplaceholder.typicode.com';
-// let query = 'comments?postId=1'; // Esto va a cambiar al interacturar con la pagina web
-// fetch(`${urlBase}/${query}`)
-//     .then(response => response.json())
-//     .then(json => console.log(json));
+fetch(`${urlBase}/${query}`)
+    .then(response => response.json())
+    .then(json => console.log(json))
 
-// let urlBase = 'https://jsonplaceholder.typicode.com';
-// let query = 'posts/1'; // Pide el post con id igual a 1
-// fetch(`${urlBase}/${query}`)
-//     .then(response => response.json())
-//     .then(json => console.log(json));
+query = 'posts/1'
 
-// VAMOS A USAR EL METODO POST QUE SIRVE PARA ENVIAR UN NUEVO OBJETO
-let urlBase = 'https://jsonplaceholder.typicode.com';
-let query = 'posts';
+fetch(`${urlBase}/${query}`)
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+// En las siguientes líneas se muestra como hacer una solicitud para enviar un nuevo ítem (método POST) mediante una api con fetch
+// El requestBody es el nuevo ítem
+query = 'posts'
 let requestBody = {
     title: 'Ricardo comenta sobre tu foto',
-    body: '¡Que bella foto!',
-    userId: 1, // DEBERIA COINCIDIR CON EL ID DE RICARDO EN UN EJEMPLO REAL
-};
+    body: '¡Linda foto!',
+    // En la realidad el userId debería ser el de Ricardo para no romper nada
+    userId: 1,
+}
+
 fetch(`${urlBase}/${query}`, {
-    method: 'POST', // INDICO EL METODO QUE VOY A USAR
+    method: 'POST',
     headers: {
-        'Content-type': 'application/json; charset=UTF-8' // INDICO QUE VOY A ENVIAR UN JSON
+        'Content-type': 'application/json; charset=UTF-8'
     },
-    body: JSON.stringify(requestBody), // CONVERTIMOS UN OBJETO DE JS A UN JSON
+    // El método stringify convierte un objeto de JS en un json
+    body: JSON.stringify(requestBody),
+})
+    // El status va a valer 201 en caso de éxito cuando se utiliza el método POST
+    .then(response => response.json())
+    // El backend es el encargado de crear el id para el nuevo item
+    .then(json => console.log(json))
+
+// En las siguientes líneas se muestra como hacer una solicitud para modificar un ítem (método PUT) mediante una api con fetch
+// Como el ítem ya existe debemos indicar su id en el requestBody
+let id = '5'
+requestBody = {
+    id: parseInt(id),
+    title: 'Ricardo comenta sobre tu foto',
+    body: '¡Mala foto!',
+    userId: 1,
+}
+
+fetch(`${urlBase}/${query}/${id}`, {
+    method: 'PUT',
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+    },
+    body: JSON.stringify(requestBody),
 })
     .then(response => response.json())
-    .then(json => console.log(json)); // NOS DEVUELVO LO MISMO QUE ENVIAMOS PORQUE ES UNA API FALSA PERO CON UN ID NUEVO PARA EL POST
+    .then(json => console.log(json))
 
-// VAMOS A USAR EL METODO PUT QUE SIRVE PARA MODIFICAR UN OBJETO
-// let urlBase = 'https://jsonplaceholder.typicode.com';
-// let query = 'posts';
-// let id = '1'; // INDICO EL ID QUE VAMOS A MODIFICAR
-// let requestBody = {
-//     id: parseInt(id),
-//     title: 'Ricardo comenta sobre tu foto',
-//     body: '¡Que bella foto!',
-//     userId: 1, // DEBERIA COINCIDIR CON EL ID DE RICARDO EN UN EJEMPLO REAL
-// };
-// fetch(`${urlBase}/${query}/${id}`, {
-//     method: 'PUT',
-//     headers: {
-//         'Content-type': 'application/json; charset=UTF-8'
-//     },
-//     body: JSON.stringify(requestBody),
-// })
-//     .then(response => response.json())
-//     .then(json => console.log(json));
+// En las siguientes líneas se muestra como hacer una solicitud para modificar un atributo de un ítem (método PATCH) de una api con fetch
+// El requestBody solo debe contener un atributo
+id = '10'
+requestBody = {
+    title: 'Ricardo comenta sobre tu foto',
+}
 
-// VAMOS A USAR EL METODO PATCH QUE SIRVE PARA MODIFICAR UN ATRIBUTO DE UN OBJETO
-// let urlBase = 'https://jsonplaceholder.typicode.com';
-// let query = 'posts';
-// let id = '5'; // INDICO EL ID QUE VAMOS A MODIFICAR
-// let requestBody = {
-//     title: 'Ricardo comenta sobre tu foto', // SOLO MODIFICAMOS ESTE ATRIBUTO
-// };
-// fetch(`${urlBase}/${query}/${id}`, {
-//     method: 'PATCH',
-//     headers: {
-//         'Content-type': 'application/json; charset=UTF-8'
-//     },
-//     body: JSON.stringify(requestBody),
-// })
-//     .then(response => response.json())
-//     .then(json => console.log(json));
+fetch(`${urlBase}/${query}/${id}`, {
+    method: 'PATCH',
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+    },
+    body: JSON.stringify(requestBody),
+})
+    .then(response => response.json())
+    .then(json => console.log(json))
 
-// VAMOS A HACER DELETE QUE SIRVE PARA BORRAR UN ITEM
-// let urlBase = 'https://jsonplaceholder.typicode.com';
-// let query = 'posts';
-// let id = '5'; // INDICO EL ID QUE VAMOS A BORRAR
-// fetch(`${urlBase}/${query}/${id}`, {
-//     method: 'DELETE',
-// }); // NO NOS VA A DEVOLVER NADA LA API FALSA
-
-// Hacer los TP4, TP5, y TP6
+// En las siguientes líneas se muestra como hacer una solicitud para borrar un ítem (método DELETE) mediante una api con fetch
+id = '15'
+fetch(`${urlBase}/${query}/${id}`, {
+    method: 'DELETE',
+})
